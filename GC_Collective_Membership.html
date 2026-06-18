@@ -506,7 +506,28 @@
   .services-nav a:hover {
     background: rgba(201,168,76,0.12);
   }
-</style>
+
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #c9a84c;
+    color: #0a0a0a;
+    text-align: center;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 -2px 12px rgba(201,168,76,0.4);
+  }
+  @media (max-width: 600px) {
+    .sticky-cta { display: block; }
+    .page-wrap { padding-bottom: 60px; }
+  }
+
+  </style>
 </head>
 <body>
 
@@ -748,7 +769,11 @@
   </div>
 
   <footer>
-    <a href="https://gccollective.myportfolio.com" target="_blank">View Portfolio</a> &nbsp;&mdash;&nbsp; GC Collective &copy; 2026
+    <a href="https://gccollective.myportfolio.com" target="_blank">Portfolio</a>
+    &nbsp;&mdash;&nbsp;
+    <a href="https://instagram.com/GChildGFX" target="_blank">@GChildGFX</a>
+    &nbsp;&mdash;&nbsp;
+    GC Collective &copy; 2026
   </footer>
 
 

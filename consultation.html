@@ -172,7 +172,37 @@
   }
   .services-nav a:hover { background: rgba(201,168,76,0.12); }
   .services-nav a.active { background: rgba(201,168,76,0.18); }
-</style>
+
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #c9a84c;
+    color: #0a0a0a;
+    text-align: center;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 -2px 12px rgba(201,168,76,0.4);
+  }
+  @media (max-width: 600px) {
+    .sticky-cta { display: block; }
+    .page-wrap { padding-bottom: 60px; }
+  }
+
+  </style>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thegccollective.github.io/consultation.html" />
+  <meta property="og:title" content="Book a Consultation — GC Collective" />
+  <meta property="og:description" content="Get expert creative direction for your brand. Book a free 15-minute call." />
+  <meta property="og:image" content="https://thegccollective.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book a Consultation — GC Collective" />
+  <meta name="twitter:description" content="Get expert creative direction for your brand. Book a free 15-minute call." />
+  <meta name="twitter:image" content="https://thegccollective.github.io/og-image.png" />
 </head>
 <body>
 <div class="page-wrap">
@@ -197,6 +227,11 @@
 <h1>Artist Consultation</h1>
   <p class="subtitle">Strategy session to build your brand, image & rollout plan</p>
   <div class="price-note">Consultation <strong>$75 / hour</strong> — book your session below and we'll confirm your time.</div>
+    <div style="text-align:center; padding: 32px 16px 8px;">
+    <p style="color:#aaa; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Ready to Talk?</p>
+    <a href="https://calendly.com/gccollective" target="_blank" style="display:inline-block; background:#c9a84c; color:#0a0a0a; font-weight:800; font-size:15px; letter-spacing:0.06em; padding:14px 32px; border-radius:6px; text-decoration:none; margin-bottom:8px;">📅 Book a Free 15-Min Call</a>
+    <p style="color:#555; font-size:12px; margin-top:8px;">Prefer to write? Use the form below.</p>
+  </div>
   <form id="intake-form" action="https://formspree.io/f/xvznjbeq" method="POST">
     <input type="hidden" name="_subject" value="New Artist Consultation Request — GC Collective">
     <input type="hidden" name="_replyto" value="">
