@@ -140,6 +140,38 @@
     margin-top: 40px;
   }
 
+
+  .services-nav {
+    background: rgba(201,168,76,0.06);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    margin-bottom: 32px;
+  }
+  .services-nav-inner {
+    display: inline-flex;
+    gap: 0;
+    padding: 0 10px;
+    min-width: 100%;
+    justify-content: center;
+  }
+  .services-nav a {
+    display: inline-block;
+    color: #c9a84c;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 11px;
+    -webkit-transition: background 0.2s; transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .services-nav a:hover { background: rgba(201,168,76,0.12); }
+  .services-nav a.active { background: rgba(201,168,76,0.18); }
 </style>
 </head>
 <body>
@@ -150,7 +182,19 @@
   <div style="text-align:center;margin-bottom:20px;">
     <a class="back-link" href="index.html">&#8592; Back to GC Collective</a>
   </div>
-  <h1>Full Campaign</h1>
+    <nav class="services-nav">
+    <div class="services-nav-inner">
+      <a href="cover-art.html">Cover Art</a>
+      <a href="flyer-design.html">Flyers</a>
+      <a href="motion-cover.html">Motion Cover</a>
+      <a href="stage-video.html">Stage Video</a>
+      <a href="logo-design.html">Logo Design</a>
+      <a href="consultation.html">Consultation</a>
+      <a href="full-campaign.html" class="active">Full Campaign</a>
+      <a href="ai-tools.html">AI Tools</a>
+    </div>
+  </nav>
+<h1>Full Campaign</h1>
   <p class="subtitle">Complete visual rollout — cover art, flyers, socials, billboards & more</p>
   <div class="price-note">Full Campaign from <strong>$700</strong> — includes cover art, motion cover, social banners, event flyers, logo, and a custom rollout strategy</div>
   <form id="intake-form" action="https://formspree.io/f/xvznjbeq" method="POST">
@@ -242,6 +286,12 @@
     Your request has been received.<br>We'll be in touch within 24–48 hours.<br><br>
     <a class="back-link" href="index.html">&#8592; Back to GC Collective</a>
   </div>
+    <div style="background:rgba(0,210,100,0.07);border:1px solid rgba(0,210,100,0.2);border-radius:10px;padding:16px;text-align:center;margin-top:24px;">
+    <p style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#00d264;font-weight:700;margin-bottom:4px;">Pay via Cash App</p>
+    <p style="font-size:24px;font-weight:700;color:#fff;">$WillzGFX</p>
+    <p style="font-size:11px;color:#666;margin-top:4px;">Send payment after submitting. Include your artist name in the note.</p>
+  </div>
+
   <p class="footer-note">info.gccollective@gmail.com &nbsp;|&nbsp; GC Collective &copy; 2024</p>
 </div>
 <script>
