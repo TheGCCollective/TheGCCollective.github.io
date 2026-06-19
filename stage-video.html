@@ -199,6 +199,24 @@
   .video-embed { position:relative; width:100%; max-width:800px; margin:0 auto; padding-top:56.25%; border-radius:10px; overflow:hidden; background:#111; }
   .video-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
 
+  
+  .faq-section { padding: 36px 0 8px; }
+  .faq-label { text-align:center; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#555; margin-bottom:20px; }
+  .faq-item { border-bottom: 1px solid #1e1e1e; }
+  .faq-question {
+    width:100%; background:none; border:none; color:#f0f0f0;
+    font-size:14px; font-weight:700; text-align:left;
+    padding: 14px 0; cursor:pointer; display:flex;
+    justify-content:space-between; align-items:center;
+    letter-spacing:0.02em;
+  }
+  .faq-question:hover { color:#c9a84c; }
+  .faq-chevron { color:#c9a84c; font-size:18px; transition:transform 0.3s; flex-shrink:0; margin-left:12px; }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+  .faq-answer p { color:#999; font-size:13px; line-height:1.7; padding-bottom:14px; margin:0; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-item.open .faq-answer { max-height:300px; }
+
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thegccollective.github.io/stage-video.html" />
@@ -328,6 +346,17 @@ document.getElementById('intake-form').addEventListener('submit', function(e) {
     alert('Network error. Please email info.gccollective@gmail.com directly.');
   });
 });
-</script>
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  </script>
 </body>
 </html>
