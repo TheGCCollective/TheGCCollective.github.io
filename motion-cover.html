@@ -193,6 +193,25 @@
     .page-wrap { padding-bottom: 60px; }
   }
 
+  
+  .file-upload-area {
+    border: 2px dashed #c9a84c;
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(201,168,76,0.05);
+    transition: background 0.2s;
+    margin-top: 4px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .file-upload-area:active { background: rgba(201,168,76,0.12); }
+  .file-upload-icon { font-size: 36px; margin-bottom: 8px; }
+  .file-upload-area p { margin: 0; color: #c9a84c; font-weight: 700; font-size: 15px; }
+  .file-upload-area .file-hint { color: #888; font-size: 12px; font-weight: 400; margin-top: 4px !important; }
+  .file-names { margin-top: 10px; font-size: 12px; color: #aaa; text-align: left; }
+  .file-names span { display: block; padding: 2px 0; }
+
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thegccollective.github.io/motion-cover.html" />
@@ -227,7 +246,7 @@
 <h1>Motion Cover</h1>
   <p class="subtitle">Animated cover art for streaming platforms & socials</p>
   <div class="price-note">Motion Cover from <strong>$200</strong> &nbsp;(includes static cover)</strong></div>
-  <form id="intake-form" action="https://formspree.io/f/meewbrjo" method="POST">
+  <form id="intake-form" action="https://formspree.io/f/meewbrjo" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_subject" value="New Motion Cover Request — GC Collective">
     <input type="hidden" name="_replyto" value="">
     <div class="card">
@@ -261,7 +280,25 @@
         <option value="Yes">Yes — I will send the file</option>
       </select>
 
-      <label for="refs">Reference / Inspiration</label>
+      <label>Upload Your Cover Art / Image</label>
+      <div class="file-upload-area" onclick="document.getElementById('upload-image').click()">
+        <div class="file-upload-icon">🖼️</div>
+        <p>Tap to upload cover art</p>
+        <p class="file-hint">JPG, PNG — the still image you want animated</p>
+        <input type="file" id="upload-image" name="Cover Art Image" accept="image/*" multiple style="display:none" onchange="showFileNames(this,'img-names')">
+        <div id="img-names" class="file-names"></div>
+      </div>
+
+      <label style="margin-top:14px;">Upload Reference Video (optional)</label>
+      <div class="file-upload-area" onclick="document.getElementById('upload-video').click()">
+        <div class="file-upload-icon">🎬</div>
+        <p>Tap to upload reference MP4</p>
+        <p class="file-hint">Show us the vibe — motion covers, animations, examples</p>
+        <input type="file" id="upload-video" name="Reference Video" accept="video/mp4,video/*" multiple style="display:none" onchange="showFileNames(this,'vid-names')">
+        <div id="vid-names" class="file-names"></div>
+      </div>
+
+      <label for="refs" style="margin-top:14px;">Reference Links / Notes</label>
       <textarea id="refs" name="References / Inspiration" placeholder="Artist references, links to motion covers you like..."></textarea>
 
       <label for="deadline">Deadline</label>
@@ -317,6 +354,17 @@ document.getElementById('intake-form').addEventListener('submit', function(e) {
     alert('Network error. Please email info.gccollective@gmail.com directly.');
   });
 });
-</script>
+
+  function showFileNames(input, containerId) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = '';
+    for (var i = 0; i < input.files.length; i++) {
+      var sp = document.createElement('span');
+      sp.textContent = '✓ ' + input.files[i].name;
+      container.appendChild(sp);
+    }
+  }
+
+  </script>
 </body>
 </html>
