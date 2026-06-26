@@ -326,34 +326,30 @@
       <label for="song">Song / Project Title</label>
       <input type="text" id="song" name="Song / Project Title" placeholder="Song or album name" required>
 
-      <label for="style">Motion Style</label>
-      <select id="style" name="Motion Style">
-        <option value="">Select...</option>
-        <option>Subtle / Floating Elements</option>
-        <option>Particle / Smoke Effect</option>
-        <option>Glitch / Distortion</option>
-        <option>Fire / Water / Nature</option>
-        <option>Neon / Light Streaks</option>
-        <option>Other</option>
-      </select>
-
-      <label for="platform">Platform(s)</label>
-      <select id="platform" name="Platform">
-        <option>Instagram / TikTok (1:1)</option>
-        <option>YouTube (16:9)</option>
-        <option>Both</option>
-      </select>
-
       <label for="existing">Do you have existing cover art?</label>
-      <select id="existing" name="Existing Cover Art">
-        <option value="No">No — start from scratch</option>
-        <option value="Yes">Yes — I will send the file</option>
+      <select id="existing" name="Existing Cover Art" onchange="updatePriceNote(this.value)">
+        <option value="No">No — start from scratch ($100, includes static cover)</option>
+        <option value="Yes">Yes — just add motion to my cover ($60)</option>
       </select>
+      <p class="hint" id="existing-hint" style="margin-top:6px;">Already have your cover art ready? We'll animate it for $60 total.</p>
 
-      <label>Upload Your Cover Art / Image</label>
+      <label style="margin-top:14px;">Add-On Sizes <span style="font-weight:400;opacity:0.6;">(optional)</span></label>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:400;cursor:pointer;">
+          <input type="checkbox" name="Add-On: Reel / Story Resize" value="1080x1920 (+$30)" style="width:18px;height:18px;accent-color:#c9a84c;">
+          <span>Reel / Story resize <strong>1080×1920</strong> <span style="color:#c9a84c;">+$30</span></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:400;cursor:pointer;">
+          <input type="checkbox" name="Add-On: YouTube Resize" value="1920x1080 (+$30)" style="width:18px;height:18px;accent-color:#c9a84c;">
+          <span>YouTube resize <strong>1920×1080</strong> <span style="color:#c9a84c;">+$30</span></span>
+        </label>
+      </div>
+      <p class="hint" style="margin-top:6px;">Standard motion cover is 1:1 square — for regular posting & DSP upload.</p>
+
+      <label>Upload Image <span style="font-weight:400;opacity:0.6;">(Not Mandatory)</span></label>
       <div class="file-upload-area" onclick="document.getElementById('upload-image').click()">
         <div class="file-upload-icon">🖼️</div>
-        <p>Tap to upload cover art</p>
+        <p>Tap to upload image</p>
         <p class="file-hint">JPG, PNG — the still image you want animated</p>
         <input type="file" id="upload-image" name="Cover Art Image" accept="image/*" multiple style="display:none" onchange="showFileNames(this,'img-names')">
         <div id="img-names" class="file-names"></div>
