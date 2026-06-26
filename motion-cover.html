@@ -333,18 +333,28 @@
       </select>
       <p class="hint" id="existing-hint" style="margin-top:6px;">Already have your cover art ready? We'll animate it for $60 total.</p>
 
-      <label style="margin-top:14px;">Add-On Sizes <span style="font-weight:400;opacity:0.6;">(optional)</span></label>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">
-        <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:400;cursor:pointer;">
-          <input type="checkbox" name="Add-On: Reel / Story Resize" value="1080x1920 (+$30)" style="width:18px;height:18px;accent-color:#c9a84c;">
-          <span>Reel / Story resize <strong>1080×1920</strong> <span style="color:#c9a84c;">+$30</span></span>
+      <label style="margin-top:14px;">Add-Ons <span style="font-weight:400;opacity:0.6;">(optional)</span></label>
+      <p class="hint" style="margin-top:4px;margin-bottom:10px;">Standard cover is square (1:1) — for streaming & regular posting.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:12px 14px;">
+            <input type="checkbox" name="Add-On: Reel / Story Resize" value="Reel/Story (+$30)" style="width:18px;height:18px;accent-color:#c9a84c;flex-shrink:0;">
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#fff;">Reel / Story Format <span style="color:#c9a84c;">+$30</span></div>
+              <div style="font-size:12px;color:#888;margin-top:2px;">Vertical — optimized for Instagram Reels, TikTok & Stories</div>
+            </div>
+          </div>
         </label>
-        <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:400;cursor:pointer;">
-          <input type="checkbox" name="Add-On: YouTube Resize" value="1920x1080 (+$30)" style="width:18px;height:18px;accent-color:#c9a84c;">
-          <span>YouTube resize <strong>1920×1080</strong> <span style="color:#c9a84c;">+$30</span></span>
+        <label style="cursor:pointer;">
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:12px 14px;">
+            <input type="checkbox" name="Add-On: YouTube Visualizer" value="YouTube Visualizer (+$50)" style="width:18px;height:18px;accent-color:#c9a84c;flex-shrink:0;">
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#fff;">YouTube Visualizer <span style="color:#c9a84c;">+$50</span></div>
+              <div style="font-size:12px;color:#888;margin-top:2px;">Widescreen format — upload directly to YouTube as a visualizer video</div>
+            </div>
+          </div>
         </label>
       </div>
-      <p class="hint" style="margin-top:6px;">Standard motion cover is 1:1 square — for regular posting & DSP upload.</p>
 
       <label>Upload Image <span style="font-weight:400;opacity:0.6;">(Not Mandatory)</span></label>
       <div class="file-upload-area" onclick="document.getElementById('upload-image').click()">
@@ -355,12 +365,13 @@
         <div id="img-names" class="file-names"></div>
       </div>
 
-      <label style="margin-top:14px;">Upload Reference Video (optional)</label>
-      <div class="file-upload-area" onclick="document.getElementById('upload-video').click()">
+      <label style="margin-top:14px;">Reference Video (optional)</label>
+      <input type="url" name="Reference Video Link" placeholder="Paste a YouTube, TikTok, or Instagram link..." style="margin-bottom:8px;">
+      <div class="file-upload-area" onclick="document.getElementById('upload-video').click()" style="margin-top:0;">
         <div class="file-upload-icon">🎬</div>
-        <p>Tap to upload reference MP4</p>
-        <p class="file-hint">Show us the vibe — motion covers, animations, examples</p>
-        <input type="file" id="upload-video" name="Reference Video" accept="video/mp4,video/*" multiple style="display:none" onchange="showFileNames(this,'vid-names')">
+        <p>Or tap to upload a file</p>
+        <p class="file-hint">MP4 — motion covers, animations, examples</p>
+        <input type="file" id="upload-video" name="Reference Video File" accept="video/mp4,video/*" multiple style="display:none" onchange="showFileNames(this,'vid-names')">
         <div id="vid-names" class="file-names"></div>
       </div>
 
