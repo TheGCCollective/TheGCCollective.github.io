@@ -222,7 +222,21 @@
     </div>
   </div>
 
-  <form id="intake-form" action="https://formspree.io/f/xvznjbeq" method="POST" enctype="multipart/form-data">
+  
+  <!-- VISUALIZER EXAMPLE -->
+  <div style="margin-bottom:24px;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(201,168,76,0.2);">Visualizer Example</p>
+    <p style="font-size:13px;color:#666;margin-bottom:14px;">We don't just do cover art — we can bring it to life. See what a finished visualizer looks like.</p>
+    <div style="max-width:400px;margin:0 auto;">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DbR6Yeoz1FK/"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0 auto;max-width:100%;padding:0;width:100%;">
+      </blockquote>
+    </div>
+  </div>
+
+<form id="intake-form" action="https://formspree.io/f/xvznjbeq" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="New Cover Art Request — GC Collective">
       <div class="card">
         <label for="artist">Artist / Stage Name</label>
@@ -243,6 +257,16 @@
           <option value="No">No — static cover only</option>
           <option value="Yes">Yes — add motion cover (+$50)</option>
         </select>
+
+        <label for="visualizer">Add a Visualizer?</label>
+        <select id="visualizer" name="Visualizer Add-On">
+          <option value="No">No — not right now</option>
+          <option value="Reel">AI Visualizer Reel (up to 75 sec) — +$250</option>
+          <option value="Lip Sync">Lip Sync Reel (up to 75 sec) — +$400</option>
+          <option value="YouTube">AI Visualizer Full Song (YouTube) — +$300</option>
+          <option value="Music Video">AI Music Video — +$850</option>
+        </select>
+        <p class="hint">Want a full video to go with your cover? We'll build it. <a href="visualizer.html" style="color:#c9a84c;text-decoration:none;">See examples →</a></p>
         <label for="tracklist">Track List?</label>
         <select id="tracklist" name="Track List Add-On">
           <option value="No">No — single or no track listing needed</option>
@@ -364,5 +388,6 @@ document.getElementById('intake-form').addEventListener('submit', function(e) {
   });
 
   </script>
+<script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
