@@ -323,6 +323,7 @@
   <form id="intake-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="f655af5a-336f-4ba0-8995-54bdc5a29040">
     <input type="hidden" name="_subject" value="New Logo Design Request — GC Collective">
+    <input type="hidden" name="Estimated Total" id="estimated-total" value="">
     <input type="hidden" name="_replyto" value="">
     <div class="card">
       <label for="pkg">Which package are you interested in?</label>
@@ -407,7 +408,12 @@
     <button type="submit" class="submit-btn">Submit Request</button>
   </form>
   <div class="success-msg" id="success-msg">
-    Your request has been received.<br>We'll be in touch within 24–48 hours.<br><br>
+    <p style="font-size:13px;color:#888;margin-bottom:8px;">Request received — we'll be in touch within 24 hours.</p>
+    <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:18px;margin:16px 0;">
+      <p style="font-size:12px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.1em;">Your Estimated Total</p>
+      <p id="total-amount" style="font-size:36px;font-weight:900;color:#c9a84c;margin:0;"></p>
+      <p style="font-size:11px;color:#666;margin-top:6px;">Final invoice sent after we review your request.</p>
+    </div><br><br>
     <a class="back-link" href="index.html">&#8592; Back to GC Collective</a>
   </div>
     <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:16px;text-align:center;margin-top:24px;">
@@ -418,9 +424,22 @@
   <p class="footer-note">info.gccollective@gmail.com &nbsp;|&nbsp; GC Collective &copy; 2024</p>
 </div>
 <script>
+
+var logoPrices = {
+  "Logo Design — $200+": 200,
+  "Brand Identity Package — $1,200+": 1200,
+  "Full Rebrand Rollout — $2,000+": 2000,
+  "Add-On Only — quoted per project": 0,
+  "Not sure — book a free call": 0
+};
+
 document.getElementById('intake-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
+  var sel = document.querySelector('select[name="Package Selected"]');
+  var total = sel ? (logoPrices[sel.value] || 0) : 0;
+  document.getElementById('estimated-total').value = total > 0 ? '$' + total.toLocaleString() : 'Custom quote';
+  document.getElementById('total-amount').textContent = total > 0 ? '$' + total.toLocaleString() : 'Custom Quote';
   var data = new FormData(form);
   fetch(form.action, {
     method: 'POST',

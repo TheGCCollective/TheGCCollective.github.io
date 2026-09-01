@@ -306,6 +306,7 @@
   <form id="intake-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="access_key" value="f655af5a-336f-4ba0-8995-54bdc5a29040">
     <input type="hidden" name="_subject" value="New Visualizer Request — GC Collective">
+    <input type="hidden" name="Estimated Total" id="estimated-total" value="">
     <div class="card">
       <label for="artist">Artist / Brand Name</label>
       <input type="text" id="artist" name="Artist / Brand Name" placeholder="Your name or brand" required>
@@ -380,7 +381,12 @@
   </form>
 
   <div class="success-msg" id="success-msg">
-    Your request has been received.<br>We'll be in touch within 24–48 hours.<br><br>
+    <p style="font-size:13px;color:#888;margin-bottom:8px;">Request received — we'll be in touch within 24 hours.</p>
+    <div id="total-display" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:18px;margin:16px 0;">
+      <p style="font-size:12px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.1em;">Your Estimated Total</p>
+      <p id="total-amount" style="font-size:36px;font-weight:900;color:#c9a84c;margin:0;"></p>
+      <p style="font-size:11px;color:#666;margin-top:6px;">Final invoice sent after we review your request.</p>
+    </div>
     <a class="back-link" href="index.html">&#8592; Back to GC Collective</a>
   </div>
 
@@ -398,9 +404,31 @@ function showFileNames(input, targetId) {
   const names = Array.from(input.files).map(f => f.name).join(', ');
   document.getElementById(targetId).textContent = names;
 }
+
+var vizPrices = {
+  "AI Visualizer Reel (up to 75 sec) — $250": 250,
+  "Lip Sync Reel (up to 75 sec) — $400": 400,
+  "AI Visualizer Full Song — $300": 300,
+  "AI Music Video — $850": 850,
+  "AI Music Video with Lip Sync — $1,200+": 1200,
+  "Brand Spot 15–30 sec — $500": 500,
+  "Full Commercial 60 sec — $1,000": 1000,
+  "Custom Brand Package — Quote": 0
+};
+function calcVizTotal() {
+  var sel = document.querySelector('select[name="Video Type"]');
+  var base = sel ? (vizPrices[sel.value] || 0) : 0;
+  var rush = document.querySelector('select[name="Rush Order"]');
+  if (rush && rush.value === 'Yes') base += 150;
+  return base;
+}
+
 document.getElementById('intake-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
+  var total = calcVizTotal();
+  document.getElementById('estimated-total').value = total > 0 ? '$' + total.toLocaleString() : 'Custom quote';
+  document.getElementById('total-amount').textContent = total > 0 ? '$' + total.toLocaleString() : 'Custom Quote';
   var data = new FormData(form);
   fetch(form.action, {
     method: 'POST',

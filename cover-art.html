@@ -249,6 +249,7 @@
 <form id="intake-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="access_key" value="f655af5a-336f-4ba0-8995-54bdc5a29040">
       <input type="hidden" name="_subject" value="New Cover Art Request — GC Collective">
+    <input type="hidden" name="Estimated Total" id="estimated-total" value="">
       <div class="card">
         <label for="artist">Artist / Stage Name</label>
         <input type="text" id="artist" name="Artist Name" placeholder="Your artist name" required>
@@ -435,6 +436,42 @@ document.addEventListener('DOMContentLoaded', function() {
   }, {passive:true});
   startTimer();
 });
+
+function calcCoverArtTotal() {
+  var total = 150; // base cover art
+
+  // Motion cover dropdown
+  var motion = document.querySelector('select[name="Motion Cover Add-On"]');
+  if (motion && motion.value === 'Yes') total += 50;
+
+  // Track list
+  var tracklist = document.querySelector('select[name="Track List Add-On"]');
+  if (tracklist && tracklist.value === 'Yes') total += 50;
+
+  // Visualizer dropdown
+  var viz = document.querySelector('select[name="Visualizer Add-On"]');
+  if (viz) {
+    if (viz.value === 'Reel') total += 250;
+    else if (viz.value === 'Lip Sync') total += 400;
+    else if (viz.value === 'YouTube') total += 100;
+    else if (viz.value === 'Music Video') total += 850;
+  }
+
+  // Campaign checkboxes
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  checkboxes.forEach(function(cb) {
+    if (cb.name === 'Campaign: Motion Cover') total += 50;
+    if (cb.name === 'Campaign: AI Visualizer Reel') total += 250;
+    if (cb.name === 'Campaign: YouTube Visualizer') total += 100;
+  });
+
+  // Rush
+  var rush = document.querySelector('select[name="Rush Order"]');
+  if (rush && rush.value === 'Yes') total += 150;
+
+  return total;
+}
+
 document.getElementById('intake-form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
